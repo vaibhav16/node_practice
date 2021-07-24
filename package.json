@@ -10,5 +10,9 @@
   "license": "ISC",
   "devDependencies": {
     "validator": "^13.6.0"
+  },
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "yargs": "^17.0.1"
   }
 }
