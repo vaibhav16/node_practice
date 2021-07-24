@@ -3,10 +3,24 @@ const chalk = require('chalk');
 
 
 yargs.command({
+    //To Run -> Use Command - node app add --title="shopping list" --body "tomato, onion, carrot"
     command:'add',
     describe:'Add a new note',
-    handler: ()=>{
-        console.log("adding a new note")
+    builder:{
+        title:{
+            describe:'Note Title',
+            demandOption:true,
+            type:'string'
+        },
+        body:{
+            describe:'Note Body',
+            demandOption:true,
+            type:'string'
+        }
+    },
+    handler: (argv)=>{
+        console.log("Title: ",argv.title);
+        console.log("Body: ",argv.body)
     }
 })
 
@@ -37,6 +51,6 @@ yargs.command({
 })
 
 
+yargs.parse(); //This is important to ensure you see the results in console. You can also use yargs.argv to do the same, but you'll always see the yargs arguments in the console.
 
-
-console.log(yargs.argv)
+//console.log(yargs.argv)
