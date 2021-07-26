@@ -9,6 +9,7 @@ data.age = 101;
 
 fs.writeFileSync("1-json.json",JSON.stringify(data));
 
+
 //Just to view the changes
 // const fileAfterChanges = fs.readFileSync('1-json.json');
 // console.log("fileAfterChanges: ",fileAfterChanges.toString())
