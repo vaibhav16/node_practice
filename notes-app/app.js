@@ -1,6 +1,6 @@
 const yargs = require('yargs');
 const chalk = require('chalk');
-
+const notes = require('./notes');
 
 yargs.command({
     //To Run -> Use Command - node app add --title="shopping list" --body "tomato, onion, carrot"
@@ -19,8 +19,9 @@ yargs.command({
         }
     },
     handler: (argv)=>{
-        console.log("Title: ",argv.title);
-        console.log("Body: ",argv.body)
+        notes.addNote(argv.title,argv.body)
+        // console.log("Title: ",argv.title);
+        // console.log("Body: ",argv.body)
     }
 })
 
