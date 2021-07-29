@@ -7,9 +7,7 @@ const getNotes = (str) => {
 
 const addNote = (title,body) =>{
     const notes = loadNotes();
-    const duplicateNotes = notes.filter((note)=>{
-        return note.title==title;
-    })
+    const duplicateNotes = notes.filter(note=>note.title==title);
 
     if(duplicateNotes.length==0){
         notes.push({
@@ -48,10 +46,9 @@ const loadNotes = () =>{
 const removeNote = (title) =>{
     try{
         const notes = loadNotes();
-        const notesToKeep = notes.filter((note)=>{
-            //Creating a new array which will filter out the note to be removed
-            return note.title!=title
-        });
+
+        //Creating a new array which will filter out the note to be removed
+        const notesToKeep = notes.filter(note=> note.title!=title);
 
         if(notes.length>notesToKeep.length && notesToKeep.length>0){
             saveNotes(notesToKeep);
