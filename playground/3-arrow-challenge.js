@@ -17,8 +17,8 @@ const tasks = {
         completed: false
     }],
 
-    getTasksToDo(){return this.tasks.filter(item=>!item.completed)}
+    getTasksToDo: (items) => items.filter(item=>!item.completed)
     
 }
 
-console.log(tasks.getTasksToDo())
+console.log(tasks.getTasksToDo(tasks.tasks))
