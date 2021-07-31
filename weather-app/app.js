@@ -11,3 +11,11 @@ setTimeout(() => {
 
 console.log('Stopping');
 
+/*
+Output Will be: 
+Starting
+Stopping
+0 second Timeout
+2 Second Timeout
+*/
+
