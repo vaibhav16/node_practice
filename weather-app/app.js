@@ -6,5 +6,19 @@ request({url:url,json:'json'}, (error, response, body) => {
     //console.log(response);
     const data = response.body.current;
     const str = data.weather_descriptions[0] + ". It is currently "+data.temperature+" degrees out. It feels like "+ data.feelslike +" degrees out."
-    console.log(str);
+    //console.log(str);
+})
+
+const geoCodeURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=pk.eyJ1IjoidnNzaGFybWEiLCJhIjoiY2tyejFwanh0MTVzcTJ2bjh3emJkem1hMCJ9.-kU_iYLZJaCyU2z3YuqKgA&limit=1";
+
+request({url:geoCodeURL,json:true},(error,response,body)=>{
+    console.log(response.body)
+    const data = response && response.body && response.body.features[0];
+    if(data){
+        const coordinates = data.geometry.coordinates;
+        const latitude = coordinates[1];
+        const longitude = coordinates[0];
+        console.log(latitude,longitude);
+    }
+
 })
