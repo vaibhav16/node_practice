@@ -1,14 +1,31 @@
 const geocode = require('./utils/geocode'); 
 const forecast = require('./utils/forecast');
 
-geocode('Noida',(error,data)=>{
 
-    console.log("error: ",error),
-    console.log("data: ",data);
+const locationEntered = process.argv[2];
 
-    forecast(data.latitude,data.longitude,(error,data)=>{
-        console.log("error: ",error);
-        console.log("data: ",data);
-    });
-})
+if(locationEntered){
+    geocode(locationEntered,(error,data)=>{
+
+        if(error){
+            return console.log("error: ",error)
+        }
+    
+    
+        forecast(data.latitude,data.longitude,(error,forecastData)=>{
+            if(error){
+                return console.log("error: ",error)
+            }
+        
+            console.log(data.location);
+            console.log(forecastData);
+        });
+    })
+    
+    
+}
+
+else{
+    console.log("No location entered!")
+}
 
