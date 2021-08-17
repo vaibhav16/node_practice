@@ -8,27 +8,29 @@ const app = express();
 
 const indexPath = path.join(__dirname,'../public');
 
+app.set('view engine','hbs');
 app.use(express.static(indexPath));
 
-// app.get('',(req,res)=>{
-//     res.send('<h1>Weather!!</h1>')
-// })
+app.get('',(req,res)=>{
+    res.render('index',{
+        title:'Weather App',
+        name:'Vaabs'
+    });
+})
 
-// app.get('/help',(req,res)=>{
-//     res.send([{
-//         name:'Bond',
-//         age:44
-//     },
-//     {
-//         name:'Deadpool',
-//         age:99
-//     }
-// ])
-// })
+app.get('/about',(req,res)=>{
+    res.render('about',{
+        title:'About Me',
+        name:'Vaabs'
+    })
+})
 
-// app.get('/about',(req,res)=>{
-//     res.send("<h1>About Page!</h1>")
-// })
+app.get('/help',(req,res)=>{
+    res.render('help',{
+        title:'Help',
+        msg:'If you need help, call 911.'
+    })
+})
 
 app.get('/weather',(req,res)=>{
     res.send({
