@@ -2,13 +2,15 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// console.log(__dirname);
-// console.log(__filename);
-// console.log(path.join(__dirname,'../public/index.html'));
-
+//Defined paths for express configuration
 const indexPath = path.join(__dirname,'../public');
+const viewsPath = path.join(__dirname,'../templates')
 
+//Setup handlebars engine and views location
 app.set('view engine','hbs');
+app.set('views',viewsPath);
+
+//Setup static directory to serve
 app.use(express.static(indexPath));
 
 app.get('',(req,res)=>{
@@ -38,10 +40,6 @@ app.get('/weather',(req,res)=>{
         location:'London'
     });
 })
-
-//app.com
-//app.com/help
-//app.com/about
 
 app.listen(3000, ()=>{
     console.log('Server is up on port 3000.')
